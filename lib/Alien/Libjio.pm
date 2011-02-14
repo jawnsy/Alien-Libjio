@@ -1,26 +1,9 @@
-# Alien::Libjio
-#  A Perl package to install libjio, a library for Journalled I/O.
-#
-# $Id$
-
 package Alien::Libjio;
+# ABSTRACT: Utility package to install and locate libjio
 
 use strict;
 use warnings;
 use Carp ();
-
-=head1 NAME
-
-Alien::Libjio - Utility package to install and locate libjio
-
-=head1 VERSION
-
-Version 1.003 ($Id$)
-
-=cut
-
-our $VERSION = '1.003';
-$VERSION = eval $VERSION;
 
 =head1 DESCRIPTION
 
@@ -54,19 +37,6 @@ programs that use it, such as B<IO::Journal>.
   my $jio = Alien::Libjio->new;
   my $ldflags = $jio->ldflags;
   my $cflags = $jio->cflags;
-
-=head1 COMPATIBILITY
-
-This module was tested under Perl 5.10.0, using Debian Linux. However, because
-it's Pure Perl and doesn't do anything too obscure, it should be compatible
-with any version of Perl that supports its prerequisite modules.
-
-By default, this library is installed wherever the main system libraries are
-usually installed. As a result, C<Alien::Libjio> will only work if installed
-with root permissions.
-
-If you encounter any problems on a different version or architecture, please
-contact the maintainer.
 
 =head1 METHODS
 
@@ -349,14 +319,6 @@ sub _try_liblist {
   return 1;
 }
 
-=head1 AUTHOR
-
-Jonathan Yu E<lt>jawnsy@cpan.orgE<gt>
-
-=head2 CONTRIBUTORS
-
-Your name here ;-)
-
 =head1 ACKNOWLEDGEMENTS
 
 =over
@@ -368,63 +330,6 @@ developing this useful library and for releasing it into the public domain.
 
 =back
 
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Alien::Libjio
-
-You can also look for information at:
-
-=over
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Alien-Libjio>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Alien-Libjio>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Alien-Libjio>
-
-=item * CPAN Request Tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-Libjio>
-
-=item * CPAN Testing Service (Kwalitee Tests)
-
-L<http://cpants.perl.org/dist/overview/Alien-Libjio>
-
-=item * CPAN Testers Platform Compatibility Matrix
-
-L<http://cpantesters.org/show/Alien-Libjio.html>
-
-=back
-
-=head1 REPOSITORY
-
-You can access the most recent development version of this module at:
-
-L<http://svn.ali.as/cpan/trunk/Alien-Libjio>
-
-If you are a CPAN developer and would like to make modifications to the code
-base, please contact Adam Kennedy E<lt>adamk@cpan.orgE<gt>, the repository
-administrator. I only ask that you contact me first to discuss the changes you
-wish to make to the distribution.
-
-=head1 FEEDBACK
-
-Please send relevant comments, rotten tomatoes and suggestions directly to the
-maintainer noted above.
-
-If you have a bug report or feature request, please file them on the CPAN
-Request Tracker at L<http://rt.cpan.org>. If you are able to submit your bug
-report in the form of failing unit tests, you are B<strongly> encouraged to do
-so.
-
 =head1 SEE ALSO
 
 L<IO::Journal>, a Perl module that provides an interface to libjio.
@@ -433,12 +338,6 @@ L<http://blitiri.com.ar/p/libjio/>, Alberto Bertogli's page about libjio,
 which explains the purpose and features of libjio.
 
 =head1 CAVEATS
-
-=head2 KNOWN BUGS
-
-There are no known bugs as of this release.
-
-=head2 LIMITATIONS
 
 =over
 
@@ -465,36 +364,5 @@ Another workaround is to disable taint checking, but that's not recommended.
 (See: L<http://rt.perl.org/rt3/Ticket/Display.html?id=66572>)
 
 =back
-
-=head1 LICENSE
-
-In a perfect world, I could just say that this package and all of the code
-it contains is Public Domain. It's a bit more complicated than that; you'll
-have to read the included F<LICENSE> file to get the full details.
-
-=head1 QUALITY ASSURANCE METRICS
-
-=head2 TEST COVERAGE
-
-  ----------------------- ------ ------ ------ ------ ------ ------
-  File                     stmt   bran   cond   sub    pod   total
-  ----------------------- ------ ------ ------ ------ ------ ------
-  Alien/Libjio.pm         97.7   84.4   66.7   100.0  100.0  93.4
-
-Okay, granted, the coverage sucks -- generally, I aim for 100% in all of
-the categories, using fault injection to test all the code paths. Due to
-the nature of the module it's somewhat difficult to do.
-
-=head1 DISCLAIMER OF WARRANTY
-
-The software is provided "AS IS", without warranty of any kind, express or
-implied, including but not limited to the warranties of merchantability,
-fitness for a particular purpose and noninfringement. In no event shall the
-authors or copyright holders be liable for any claim, damages or other
-liability, whether in an action of contract, tort or otherwise, arising from,
-out of or in connection with the software or the use or other dealings in
-the software.
-
-=cut
 
 1;

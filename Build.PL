@@ -19,44 +19,11 @@ my $builder = My::Builder->new(
   dist_author           => 'Jonathan Yu <jawnsy@cpan.org>',
   dist_version_from     => 'lib/Alien/Libjio.pm',
   dynamic_config        => 1,
-  create_readme         => 0,
-  recursive_test_files  => 1,
-  sign                  => 1,
-  create_packlist       => 1,
 
-  # Maintain compatibility with ExtUtils::MakeMaker installations
-  create_makefile_pl    => 'passthrough',
-
-  requires => {
-    'perl'              => 5.006,
-  },
-  build_requires => {
-    # User tests for good functionality
-    'Test::More'              => 0.62,
-    'Test::NoWarnings'        => 0.084,
-
-    # For the C compiling process
-    'ExtUtils::CBuilder'      => 0,
-  },
-  recommends => {
-  },
-  conflicts => {
-  },
+  # Prerequisites generated from dist.ini by ModuleBuild::Custom
+##{ $plugin->get_prereqs ##}
 
   add_to_cleanup => [ 'Alien-Libjio-*' ],
-  script_files => [],
-
-  meta_merge => {
-    resources => {
-      # Custom resources (must begin with an uppercase letter)
-      Ratings      => 'http://cpanratings.perl.org/d/Alien-Libjio',
-
-      # Official keys (homepage, license, bugtracker)
-      repository   => 'http://svn.ali.as/cpan/trunk/Alien-Libjio',
-      bugtracker   => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-Libjio',
-      license      => 'http://edwardsamuels.com/copyright/beyond/articles/public.html',
-    },
-  },
 );
 
 # Use Alien::Libjio to see if it's already installed
@@ -84,10 +51,8 @@ unless ($jio->installed) {
     # Probe for GNU Make (useful on BSD/Unix variants)
     if ($make eq 'make' && grep { -x $_ . '/gmake' } @PATH) {
       $make = 'gmake';
-      if ($^O =~ /bsd$/) {
-        print {*STDERR} "warning: your system is a BSD variant but " .
-          "gmake wasn't found.\n";
-      }
+      warn 'your system is a BSD variant but gmake was not found'
+        if ($^O =~ /bsd$/);
     }
   }
   $make = $builder->prompt('What is your system "make" command?', $make);

@@ -1,9 +1,6 @@
 #!/usr/bin/perl
 
-# t/03core.t
-#  Tests core functionality
-#
-# $Id$
+# Tests core functionality
 
 use strict;
 use warnings;

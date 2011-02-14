@@ -1,9 +1,6 @@
 #!/usr/bin/perl
 
-# t/01build.t
-#  Test that the build completed successfully
-#
-# $Id$
+# Test that the build completed successfully
 
 use strict;
 use warnings;
